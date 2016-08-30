@@ -17,18 +17,18 @@ require("data.table")
 require("reshape2")
 
 # Load: activity labels
-Var_activity_labels <- read.table("./UCI HAR Dataset/Var_activity_labels.txt")[,2]
+Var_activity_labels <- read.table("./UCI HAR Dataset/activity_labels.txt")[,2]
 
 # Load: data column names
-Var_features <- read.table("./UCI HAR Dataset/Var_features.txt")[,2]
+Var_features <- read.table("./UCI HAR Dataset/features.txt")[,2]
 
 # Extract only the measurements on the mean and standard deviation for each measurement.
 extract_Var_features <- grepl("mean|std", Var_features)
 
 # Load and process Var_X_test & Var_y_test data.
-Var_X_test <- read.table("./UCI HAR Dataset/test/Var_X_test.txt")
-Var_y_test <- read.table("./UCI HAR Dataset/test/Var_y_test.txt")
-Var_subject_test <- read.table("./UCI HAR Dataset/test/Var_subject_test.txt")
+Var_X_test <- read.table("./UCI HAR Dataset/test/X_test.txt")
+Var_y_test <- read.table("./UCI HAR Dataset/test/y_test.txt")
+Var_subject_test <- read.table("./UCI HAR Dataset/test/subject_test.txt")
 
 names(Var_X_test) = Var_features
 
@@ -44,8 +44,8 @@ names(Var_subject_test) = "subject"
 Var_test_data <- cbind(as.data.table(Var_subject_test), Var_y_test, Var_X_test)
 
 # Load and process Var_X_train & Var_Y_train data.
-Var_X_train <- read.table("./UCI HAR Dataset/train/Var_X_train.txt")
-Var_Y_train <- read.table("./UCI HAR Dataset/train/Var_Y_train.txt")
+Var_X_train <- read.table("./UCI HAR Dataset/train/X_train.txt")
+Var_Y_train <- read.table("./UCI HAR Dataset/train/Y_train.txt")
 
 subject_train <- read.table("./UCI HAR Dataset/train/subject_train.txt")
 
